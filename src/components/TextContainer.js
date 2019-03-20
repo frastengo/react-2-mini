@@ -6,6 +6,7 @@ export default class TextContainer extends Component {
     this.state = {
       text: ''
     }
+    this.updateText = this.updateText.bind(this)
   }
 
   updateText(e) {
@@ -13,12 +14,17 @@ export default class TextContainer extends Component {
       text: e.target.value
     })
   }
-
   render() {
+    console.log('heeereee', this.props)
+    let styles = {
+      color: this.props.fontColor,
+      fontSize: this.props.fontSize,
+      fontFamily: this.props.fontFamily,
+    }
     return (
       <div className="textContainer">
         <textarea 
-          // style={  }
+          style={styles}
           onChange={this.updateText}
           value={this.state.text} 
           placeholder='Start typing your thoughts here!'
@@ -29,6 +35,8 @@ export default class TextContainer extends Component {
     )
   }
 }
+
+//if a class inside of component, need to call this.props, if not a class can use props.... without this
 
 
 
